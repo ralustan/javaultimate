@@ -1,0 +1,49 @@
+
+plugins {
+    id 'java'
+    id "org.sonarqube" version "3.3"
+    id 'jacoco'
+
+
+}
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    implementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "ralustan_javaultimate"
+    property "sonar.organization", "ralustan"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
+}
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport{
+    dependsOn test
+    reports{
+        xml.enabled(true)
+    }
+}
+jacoco{
+    toolVersion="0.8.7"
+}
+
+
+
+apply plugin: 'java'
+compileJava {
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+}
+
+repositories {
+    mavenCentral()
+}
