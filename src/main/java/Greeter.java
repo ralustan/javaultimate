@@ -1,6 +1,9 @@
 public class Greeter {
 
-    private String name = "";
+    private String name = "Raluca";
+    public Greeter (String name){
+        this.name=name;
+    }
     public String getName()
 
     {
@@ -14,7 +17,7 @@ public class Greeter {
     }
     public String sayHello()
     {
-        if (name.equals(""))
+        if (name.equals(name))
         {
             return "Hello!";
 
